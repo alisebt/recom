@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  gorse:
+    image: zhenghaoz/gorse-in-one:latest
+    container_name: gorse
+    ports:
+      - "8087:8087"  # REST API
+      - "8086:8086"  # Dashboard
+    environment:
+      - GORSE_CACHE_STORE=sqlite://cache.db
+      - GORSE_DATA_STORE=sqlite://data.db
+    volumes:
+      - ./data:/app
